@@ -2,9 +2,12 @@ package com.cts.jpahibdemo.entity;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
-@DiscriminatorValue("M")
+//@DiscriminatorValue("M")
+//@Table(name ="mgrs")
+@Table(name ="only_mgrs")
 public class Manager extends Employee {
 
 	private Double hra;

@@ -2,9 +2,12 @@ package com.cts.jpahibdemo.entity;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
-@DiscriminatorValue("C")
+//@DiscriminatorValue("C")
+//@Table(name="cemps")
+@Table(name="only_cemps")
 public class ContractEmployee extends Employee{
 
 	private Double duration;

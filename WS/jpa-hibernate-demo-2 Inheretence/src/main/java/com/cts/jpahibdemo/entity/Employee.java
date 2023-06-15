@@ -14,10 +14,16 @@ import javax.persistence.Table;
 
 @Entity
 
-@Table(name = "all_emps")
+/*@Table(name = "all_emps")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "emp_type", discriminatorType = DiscriminatorType.CHAR)
-@DiscriminatorValue("E")
+@DiscriminatorValue("E")*/
+
+//@Table(name="base_emps")
+//@Inheritance(strategy = InheritanceType.JOINED)
+
+@Table(name="only_emps")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Employee {
 
 	@Id
