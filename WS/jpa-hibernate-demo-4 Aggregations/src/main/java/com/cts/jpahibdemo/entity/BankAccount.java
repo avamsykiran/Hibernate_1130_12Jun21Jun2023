@@ -15,7 +15,7 @@ public class BankAccount {
 	private String ifsc;
 	
 	@OneToOne
-	@JoinColumn(name="empId")
+	@JoinColumn(name="empNumber")
 	private Employee holder;
 	
 	public BankAccount() {

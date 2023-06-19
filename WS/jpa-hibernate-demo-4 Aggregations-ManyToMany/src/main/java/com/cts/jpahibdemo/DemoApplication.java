@@ -17,7 +17,6 @@ public class DemoApplication {
 
 	public static void main(String[] args) {
 		
-		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("mysqlPU");
 		EntityManager em = emf.createEntityManager();
 		
@@ -46,9 +45,6 @@ public class DemoApplication {
 		em.persist(c3);
 		em.persist(c4);
 		
-		em.persist(new Trainee(new TraineeId(1L, "JavaFSD"),"Vamsy Kiran", LocalDate.now()));
-		em.persist(new Trainee(new TraineeId(1L, "MERN-FSD"),"Suseela", LocalDate.now()));
-		em.persist(new Trainee(new TraineeId(1L, "MEAN-FSD"),"Indhikaa", LocalDate.now()));
 		txn.commit();
 		em.close();
 	}

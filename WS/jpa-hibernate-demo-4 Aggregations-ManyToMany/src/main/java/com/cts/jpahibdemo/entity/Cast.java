@@ -15,13 +15,20 @@ public class Cast implements Comparable<Cast> {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long castId;
+	
 	@ManyToOne
 	@JoinColumn(name="mid")
 	private Movie movie;
+	
 	@ManyToOne
 	@JoinColumn(name="aid")
 	private Artist artist;
 	private String role;
+	
+	@Override
+	public int compareTo(Cast o) {
+		return this.castId==null?1:this.castId.compareTo(o.castId);
+	}
 	
 	public Cast() {
 		
@@ -58,10 +65,6 @@ public class Cast implements Comparable<Cast> {
 		this.role = role;
 	}
 
-	@Override
-	public int compareTo(Cast o) {
-		return this.castId==null?1:this.castId.compareTo(o.castId);
-	}
-	
+
 	
 }

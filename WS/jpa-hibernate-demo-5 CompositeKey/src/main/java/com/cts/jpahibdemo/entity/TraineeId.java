@@ -1,6 +1,7 @@
 package com.cts.jpahibdemo.entity;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.persistence.Embeddable;
 
@@ -43,11 +44,7 @@ public class TraineeId implements Serializable{
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((programName == null) ? 0 : programName.hashCode());
-		result = prime * result + ((rollNumber == null) ? 0 : rollNumber.hashCode());
-		return result;
+		return Objects.hash(programName, rollNumber);
 	}
 
 	@Override
@@ -59,18 +56,9 @@ public class TraineeId implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		TraineeId other = (TraineeId) obj;
-		if (programName == null) {
-			if (other.programName != null)
-				return false;
-		} else if (!programName.equals(other.programName))
-			return false;
-		if (rollNumber == null) {
-			if (other.rollNumber != null)
-				return false;
-		} else if (!rollNumber.equals(other.rollNumber))
-			return false;
-		return true;
+		return Objects.equals(programName, other.programName) && Objects.equals(rollNumber, other.rollNumber);
 	}
+
 	
 	
 }
