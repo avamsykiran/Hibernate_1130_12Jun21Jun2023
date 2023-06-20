@@ -237,35 +237,29 @@ JPA & Hibernate 5
             3. Each Channel is represented by a channel code and detials like channel name
                 monthly fee are needed
             4. A consumer can have more than one subscription
-            5. Each subscription can have a group of packages or individual channels.
+            5. Each subscription can have a many channels
             6. Each subscription will have a activation date and validity date.
-            7. A package is a group of a few channels.
             
             Consumer
                 ---OneTOMany-->> <<--ManyToOne--- Subscription
 
             Channel
-                ---OneTOMany-->> <<--ManyToOne--- PackazeItem
-                ---OneTOMany-->> <<--ManyToOne--- SubscriptionItem
-
-            Packaze
-                ---OneTOMany-->> <<--ManyToOne--- PackazeItem
                 ---OneTOMany-->> <<--ManyToOne--- SubscriptionItem
 
             Subscription
                 ---OneTOMany-->> <<--ManyToOne--- SubscriptionItem
 
+            Consumer
+                mobileNumber:String, name:string,address:Address,subscriptions:Set<Subscrption>
 
-        JPQL - Java Persistence Query Language                     SQL
-            uses class names and field names                            uses table names and column names
+            Channel
+                chId:Long,channelName,monthlyFee,subsciptionItems:Set<SubsctiptionItem>
 
-            SELECT e FROM Employee e                                    SELECT * FROM emps
-            SELECT e.name,e.mailId FROM Employee e                      SELECT ename,mail_id FROM emps
-            
-            SELECT e.salary FROM Employee e                             SELECT e.sal 
-            WHERE e.dept.title="ACCOUNTS"                               FROM   emps e INNET JOIN depts d 
-                                                                        ON     e.dept_no = d.dept_no
-                                                                        WHERE  d.title='ACCOUNTS'
+            Subscription
+                subId:Long,consumer:Consumer,subsciptionItems:Set<SubsctiptionItem>,activationDate:LocalDate,expiryDate:LocalDate
+
+            SubscriptionItem
+                supItemId:Long,channel:Channel,subscription:Subsciption
 
         JPA api
             Persistence
@@ -336,3 +330,14 @@ JPA & Hibernate 5
             // local SessionFactory bean created
             SessionFactory sessionFactory = config.buildSessionFactory();
             Session session = sessionFactory.getCurrentSession();
+
+        JPQL - Java Persistence Query Language                     SQL
+            uses class names and field names                            uses table names and column names
+
+            SELECT e FROM Employee e                                    SELECT * FROM emps
+            SELECT e.name,e.mailId FROM Employee e                      SELECT ename,mail_id FROM emps
+            
+            SELECT e.salary FROM Employee e                             SELECT e.sal 
+            WHERE e.dept.title="ACCOUNTS"                               FROM   emps e INNET JOIN depts d 
+                                                                        ON     e.dept_no = d.dept_no
+                                                                        WHERE  d.title='ACCOUNTS'
